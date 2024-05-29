@@ -23,16 +23,16 @@ TARGET := $(BIN_DIR)/main
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-    @mkdir -p $(BIN_DIR)
-    @$(CC) $(LDFLAGS) -o $@ $^
+	mkdir -p $(BIN_DIR)
+	$(CC) $(LDFLAGS) -o $@ $^
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-    @mkdir -p $(OBJ_DIR)
-    @$(CC) $(CFLAGS) -c -o $@ $<
+	mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 -include $(DEPS)
 
 clean:
-    @rm -rf $(BUILD_DIR)
+	@rm -rf $(BUILD_DIR)
 
 .PHONY: all clean

@@ -2,5 +2,5 @@
 #include <stdio.h>
 
 void aaa() {
-    printf("Bomdia");
+    printf("Bomdias");
 }

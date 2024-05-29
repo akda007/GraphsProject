@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "actorsdata.h": "c"
+    },
+    "makefile.makePath": "mingw32-make",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\akdag\\Desktop\\GraphsProject\\build\\bin",
+            "binaryPath": "c:\\Users\\akdag\\Desktop\\GraphsProject\\build\\bin\\main",
+            "binaryArgs": []
+        }
+    ]
+}

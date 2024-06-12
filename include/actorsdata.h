@@ -3,7 +3,7 @@
 
 #include "dtypes.h"
 
-#define START_SIZE 10
+#define ASTART_SIZE 10
 #define SIZE_MULTIPLIER 5
 #define RESIZE_MARGIN 80 //percentage
 

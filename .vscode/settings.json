@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "actorsdata.h": "c"
+        "actorsdata.h": "c",
+        "string.h": "c"
     },
     "makefile.makePath": "mingw32-make",
     "makefile.launchConfigurations": [

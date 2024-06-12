@@ -1,28 +1,35 @@
 #include "dtypes.h"
 #include "actorsdata.h"
+#include "moviesdata.h"
 #include "string.h"
 
 #include <stdio.h>
 
 int main() {
-    actors_array_t* array = actors_array_create();
+    movies_array_t* movies = movies_array_create();
 
-    actors_t a1, a2;
-    a1.id = 1;
-    a2.id = 2;
+    movies_t* A = create_movie(1, "movie a");
+    movies_t* B = create_movie(2, "movie b");
+    movies_t* C = create_movie(3, "movie c");
+    movies_t* D = create_movie(4, "movie d");
 
-    a1.primaryName = malloc(10);
-    a2.primaryName = malloc(10);
-    strcpy(a1.primaryName, "Pedro");
-    strcpy(a2.primaryName, "Joao");
+    movies_array_insert(movies, A);
+    movies_array_insert(movies, B);
+    movies_array_insert(movies, C);
+    movies_array_insert(movies, D);
 
-    actors_array_insert(array, &a1);
-    actors_array_insert(array, &a2);
+    insert_movie_neighbor(A, C);
+    insert_movie_neighbor(B, A);
+    insert_movie_neighbor(B, D);
+    insert_movie_neighbor(D, B);
+    insert_movie_neighbor(C, B);
+    insert_movie_neighbor(C, A);
+    insert_movie_neighbor(C, D);
 
-    for (int i = 0; i < array->length; i++) {
-        printf("%s\n", array->data[i]->primaryName);
-    }
+    print_movies(movies);
 
-    actors_array_free(&array);
+
+    movies_array_free(&movies);
+
     return 0;
 }

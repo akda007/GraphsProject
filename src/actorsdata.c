@@ -6,7 +6,7 @@
 actors_array_t* actors_array_create() {
     actors_array_t* arr = malloc(sizeof(actors_array_t));
 
-    arr->max_size = START_SIZE;
+    arr->max_size = ASTART_SIZE;
     arr->length = 0;
     arr->data = malloc(sizeof(actors_t*) * arr->max_size);
 

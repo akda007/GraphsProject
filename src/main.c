@@ -2,6 +2,7 @@
 #include "actorsdata.h"
 #include "moviesdata.h"
 #include "string.h"
+#include "dotwriter.h"
 
 #include <stdio.h>
 
@@ -26,10 +27,13 @@ int main() {
     insert_movie_neighbor(C, A);
     insert_movie_neighbor(C, D);
 
+
     print_movies(movies);
 
 
-    movies_array_free(&movies);
+    movies_t* movie_c = array_find_movie(movies, 3);
 
+    write_file("test.dot", movies);
+    movies_array_free(&movies);
     return 0;
 }

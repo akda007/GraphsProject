@@ -1,13 +1,20 @@
 {
     "files.associations": {
         "actorsdata.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "dotwriter.h": "c",
+        "moviesdata.h": "c"
     },
     "makefile.makePath": "mingw32-make",
     "makefile.launchConfigurations": [
         {
             "cwd": "c:\\Users\\akdag\\Desktop\\GraphsProject\\build\\bin",
             "binaryPath": "c:\\Users\\akdag\\Desktop\\GraphsProject\\build\\bin\\main",
+            "binaryArgs": []
+        },
+        {
+            "cwd": "c:\\Users\\disrct\\Desktop\\GraphsProject\\build\\bin",
+            "binaryPath": "c:\\Users\\disrct\\Desktop\\GraphsProject\\build\\bin\\main",
             "binaryArgs": []
         }
     ]

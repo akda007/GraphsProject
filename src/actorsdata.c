@@ -15,13 +15,33 @@ actors_array_t* actors_array_create() {
 
 void actors_array_free(actors_array_t** array) {
     for (int i = 0; i < (*array)->length; i++) {
-        free((*array)->data[i]);
 
-        //Change to linked list specific free
+
+        free((*array)->data[i]);        
     }
 
     free((*array)->data);
     free(*array);
+}
+
+void free_nodes(movies_node_t* node) {
+    movies_node_t* current = node;
+    movies_node_t* previous = NULL;
+
+    while (current) {
+        previous = current;
+        current = current->next;
+
+        free(previous);
+    }
+
+}
+
+void free_actor(actors_t* actor) {
+    free(actor->name);
+    free_nodes(actor->movies);
+
+    free(actor);
 }
 
 void actors_array_resize(actors_array_t* array) {
@@ -38,9 +58,29 @@ void actors_array_resize(actors_array_t* array) {
 }
 
 void actors_array_insert(actors_array_t* array, actors_t* actor) {
-    if (array->length > 0 && array->max_size / array->length * 100.0 > RESIZE_MARGIN) {
+    if (array->length > 0 && array->length / array->max_size  * 100.0 > RESIZE_MARGIN) {
         actors_array_resize(array);
     }
 
     array->data[array->length++] = actor;
+}
+
+void actor_insert_movie(actors_t *actor, movies_t *movie) {
+    movies_node_t *node = malloc(sizeof(movies_node_t));
+
+    node->next = NULL;
+    node->node = movie;
+
+    if (!(actor->movies)) {
+        actor->movies = node;
+        return;
+    }
+
+    movies_node_t* current = actor->movies;
+
+    while(current->next) {
+        current = current->next;
+    }
+
+    current->next = node;
 }

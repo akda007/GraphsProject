@@ -20,7 +20,11 @@ DEPS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.d,$(SRCS))
 # Main target
 TARGET := $(BIN_DIR)/main
 
-all: $(TARGET)
+all: $(BUILD_DIR) $(TARGET) 
+
+$(BUILD_DIR):
+	mkdir build
+
 
 $(TARGET): $(OBJS)
 	mkdir -p $(BIN_DIR)

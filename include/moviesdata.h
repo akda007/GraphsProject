@@ -3,7 +3,7 @@
 
 #include "dtypes.h"
 
-#define MSTART_SIZE 10
+#define MSTART_SIZE 1000
 #define SIZE_MULTIPLIER 5
 #define RESIZE_MARGIN 80 //percentage
 
@@ -21,7 +21,9 @@ void movies_array_resize(movies_array_t* array);
 void movies_array_insert(movies_array_t* array, movies_t* movie);
 movies_t* create_movie(int id, char* title);
 void free_movie(movies_t** movie);
+void free_nodes(movies_node_t** neighbors);
 void print_movies(movies_array_t* movies);
 void insert_movie_neighbor(movies_t* movie, movies_t* neighbor) ;
+movies_t* array_find_movie(movies_array_t* array, int id);
 
 #endif

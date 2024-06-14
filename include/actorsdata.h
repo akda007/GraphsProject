@@ -18,7 +18,8 @@ actors_array_t* actors_array_create();
 void actors_array_free(actors_array_t** array);
 void actors_array_insert(actors_array_t* array, actors_t* actor);
 void actors_array_resize(actors_array_t* array);
-
 void actor_insert_movie(actors_t* actor, movies_t* movie);
+actors_t* create_actor(long id, char* name);
+void print_actor(actors_t* actor);
 
 #endif

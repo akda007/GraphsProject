@@ -83,7 +83,7 @@ movies_t* create_movie(int id, char* title) {
     return movie;
 }
 
-void free_nodes(movies_node_t** neighbors) {
+void free_movie_nodes(movies_node_t** neighbors) {
     movies_node_t* current = *neighbors;
 
     while (current) {
@@ -100,7 +100,7 @@ void free_movie(movies_t** movie) {
     if (!(*movie)) return;
 
     free((*movie)->title);
-    free_nodes(&((*movie)->neighbors));
+    free_movie_nodes(&((*movie)->neighbors));
     free(*movie);
 }
 

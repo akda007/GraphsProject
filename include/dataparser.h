@@ -3,6 +3,6 @@
 
 #include "actorsdata.h"
 
-void parse_actors_file(const char* file_path, actors_array_t* data_array)
+void parse_actors_file(const char* file_path, actors_array_t* data_array);
 
 #endif

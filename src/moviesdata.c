@@ -72,7 +72,7 @@ void movies_array_insert(movies_array_t* array, movies_t* movie) {
 }
 
 
-movies_t* create_movie(int id, char* title) {
+movies_t* create_movie(const int id, const char* title) {
     movies_t* movie = malloc(sizeof(movies_t));
 
     movie->id = id;
@@ -109,7 +109,7 @@ void print_movies(movies_array_t* movies){
         if (!movies->data[i]) continue;
 
         movies_t* movie = movies->data[i];
-        printf("Title: %s | id: %d\t", movie->title, movie->id);
+        printf("Title: %s | id: %d\t| Neighbors: ", movie->title, movie->id);
 
         movies_node_t* current = movie->neighbors;
         while (current) {
@@ -117,7 +117,7 @@ void print_movies(movies_array_t* movies){
             current = current->next;
         }
 
-        printf("=========================\n");
+        printf("\n");
     }
 
 }
@@ -152,15 +152,31 @@ void insert_movie_neighbor(movies_t* movie, movies_t* neighbor) {
 
 movies_t* array_find_movie(movies_array_t* array, int id) {
     int index = id % array->max_size;
+
+    if (index == array->max_size) {
+        return NULL;
+    }
+
     movies_t* movie = array->data[index];
 
-    while (movie->id != id) {
-        movie = array->data[++index];
+    if (!movie)
+        return NULL;
+
+    if (movie->id == id) {
+        return movie;
+    }
+
+    for (int i = index; i < array->max_size; i++) {
+        movie = array->data[i];
 
         if (!movie) {
             return NULL;
         }
+        
+        if (movie->id == id) {
+            return movie;
+        }
     }
 
-    return movie;
+    return NULL;
 }

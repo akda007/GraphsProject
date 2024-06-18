@@ -1,7 +1,7 @@
 #ifndef ACTORSDATA
 #define ACTORSDATA
 
-#include "dtypes.h"
+#include "datatypes.h"
 
 #define ASTART_SIZE 10
 #define SIZE_MULTIPLIER 2

@@ -1,7 +1,7 @@
 #ifndef MOVIESDATA
 #define MOVIESDATA
 
-#include "dtypes.h"
+#include "datatypes.h"
 
 #define MSTART_SIZE 1000
 #define MOVIES_SIZE_MULTIPLIER 2
@@ -19,7 +19,7 @@ void movies_array_free(movies_array_t** array);
 void movies_array_insert(movies_array_t* array, movies_t* movie);
 void movies_array_resize(movies_array_t* array);
 void movies_array_insert(movies_array_t* array, movies_t* movie);
-movies_t* create_movie(int id, char* title);
+movies_t* create_movie(const int id, const char* title);
 void free_movie(movies_t** movie);
 void free_movie_nodes(movies_node_t** neighbors);
 void print_movies(movies_array_t* movies);

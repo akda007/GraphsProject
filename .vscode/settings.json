@@ -4,7 +4,8 @@
         "string.h": "c",
         "dotwriter.h": "c",
         "moviesdata.h": "c",
-        "dataparser.h": "c"
+        "dataparser.h": "c",
+        "datatypes.h": "c"
     },
     "makefile.makePath": "mingw32-make",
     "makefile.launchConfigurations": [

@@ -1,4 +1,3 @@
-#include "dtypes.h"
 #include "actorsdata.h"
 #include "moviesdata.h"
 #include "string.h"
@@ -33,11 +32,13 @@ int main() {
     // print_movies(movies);
 
 
-
-    actors_array_t* array = actors_array_create();
+    actors_array_t* aarray = actors_array_create();
+    movies_array_t* marray = movies_array_create();
 
     printf("Parsing file\n");
-    parse_actors_file("name.basics.tsv", array);
+
+    parse_movies_file("title.basics.tsv", marray);
+    parse_actors_file("name.basics.tsv", aarray, marray);
     // actors_t* a = create_actor(1, "Andrey");
     // actors_t* b = create_actor(2, "Pedro");
     // actors_t* c = create_actor(3, "Joao");
@@ -47,17 +48,23 @@ int main() {
     // actors_array_insert(array, c);
     // actors_array_insert(array, d);
 
-    puts("Actors");
-    puts("========================");
+    // puts("Movies");
+    // puts("========================");
+    // print_movies(marray);
+  
+    // puts("Actors");
+    // puts("========================");
     
-    for (actors_t** actor = array->data; *actor; actor++) {
 
-        print_actor(*actor);
-    }
+    // for (int i = 0; i < aarray->length; i++) {
+    //     print_actor(aarray->data[i]);
+    // }
 
-    printf("Parsed: %d\n", array->length);
+    // printf("Parsed: %d\n", aarray->length);
 
-    actors_array_free(&array);
-    // movies_array_free(&movies);
+    write_file("graph.dot", marray);
+
+    actors_array_free(&aarray);
+    movies_array_free(&marray);
     return 0;
 }

@@ -99,7 +99,6 @@ void actor_insert_movie(actors_t *actor, movies_t *movie) {
 }
 
 void print_actor(actors_t* actor) {
-
     printf("(%d): %s  ->  ", actor->id, actor->name);
     
     movies_node_t* movie = actor->movies;

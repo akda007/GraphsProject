@@ -1,6 +1,6 @@
 build/obj/actorsdata.o: src/actorsdata.c include/actorsdata.h \
- include/dtypes.h
+ include/datatypes.h
 
 include/actorsdata.h:
 
-include/dtypes.h:
+include/datatypes.h:

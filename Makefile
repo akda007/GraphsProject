@@ -1,5 +1,5 @@
 CC := gcc
-CFLAGS := -Wall -Wextra -Iinclude -MMD -MP -g
+CFLAGS := -Wall -Wextra -Iinclude -MMD -MP
 LDFLAGS :=
 
 SRC_DIR := src
@@ -19,8 +19,9 @@ OBJS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 # Generate the corresponding dependency file names
 DEPS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.d,$(SRCS))
 
-MOCK_DATA_ORIGIN := $(wildcard $(MOCK_DATA_DIR)/*.tsv)
-MOCK_DATA_DEST := $(patsubst $(MOCK_DATA_DIR)/%.tsv, $(BIN_DIR)/%.tsv, $(MOCK_DATA_ORIGIN))
+MOCK_DATA_FILES := $(notdir $(wildcard $(MOCK_DATA_DIR)/*.tsv))
+MOCK_DATA_ORIGIN := $(addprefix $(MOCK_DATA_DIR)/,$(MOCK_DATA_FILES))
+MOCK_DATA_DEST := $(addprefix $(BIN_DIR)/,$(MOCK_DATA_FILES))
 
 # Main target
 TARGET := $(BIN_DIR)/main
@@ -30,9 +31,9 @@ all: $(BUILD_DIR) $(TARGET) $(MOCK_DATA_DEST)
 $(BUILD_DIR):
 	mkdir build
 
-$(MOCK_DATA_DEST): $(MOCK_DATA_ORIGIN)
+$(MOCK_DATA_DEST): $(BIN_DIR)/% : $(MOCK_DATA_DIR)/%
 	cp $< $@
-
+	
 $(TARGET): $(OBJS)
 	mkdir -p $(BIN_DIR)
 	$(CC) $(LDFLAGS) -o $@ $^

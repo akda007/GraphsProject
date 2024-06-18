@@ -13,9 +13,9 @@ void write_file(const char* file, movies_array_t* data) {
 
         movies_t* movie = data->data[i];
         
-        if (!movie->neighbors) return;
+        if (!movie->neighbors) continue;
 
-        fprintf(f, "\"%s\"-- ", movie->title);
+        fprintf(f, "\"%s\" -- ", movie->title);
 
         movies_node_t* current = movie->neighbors;
         while (current) {

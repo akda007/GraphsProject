@@ -4,7 +4,7 @@
 #include "dtypes.h"
 
 #define ASTART_SIZE 10
-#define SIZE_MULTIPLIER 5
+#define SIZE_MULTIPLIER 2
 #define RESIZE_MARGIN 80 //percentage
 
 typedef struct actors_array {

@@ -8,7 +8,6 @@
 
 
 int main() {
-    parse_actors_file("name.basics.tsv", NULL);
     // movies_array_t* movies = movies_array_create();
 
     // movies_t* A = create_movie(1, "movie a");
@@ -35,8 +34,10 @@ int main() {
 
 
 
-    // actors_array_t* array = actors_array_create();
+    actors_array_t* array = actors_array_create();
 
+    printf("Parsing file\n");
+    parse_actors_file("name.basics.tsv", array);
     // actors_t* a = create_actor(1, "Andrey");
     // actors_t* b = create_actor(2, "Pedro");
     // actors_t* c = create_actor(3, "Joao");
@@ -46,14 +47,17 @@ int main() {
     // actors_array_insert(array, c);
     // actors_array_insert(array, d);
 
-    // puts("Actors");
-    // puts("========================");
+    puts("Actors");
+    puts("========================");
     
-    // for (actors_t** actor = array->data; *actor; actor++) {
-    //     print_actor(*actor);
-    // }
+    for (actors_t** actor = array->data; *actor; actor++) {
 
-    // actors_array_free(&array);
+        print_actor(*actor);
+    }
+
+    printf("Parsed: %d\n", array->length);
+
+    actors_array_free(&array);
     // movies_array_free(&movies);
     return 0;
 }

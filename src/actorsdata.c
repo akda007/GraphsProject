@@ -9,7 +9,7 @@ actors_array_t* actors_array_create() {
 
     arr->max_size = ASTART_SIZE;
     arr->length = 0;
-    arr->data = malloc(sizeof(actors_t*) * arr->max_size);
+    // arr->data = malloc(sizeof(actors_t*) * arr->max_size);
     arr->data = calloc(arr->max_size, sizeof(actors_t*));
 
     return arr;
@@ -72,7 +72,7 @@ actors_t* create_actor(long id, char* name) {
 
     actor->id = id;
     actor->movies = NULL;
-    actor->name = malloc(strlen(name));
+    actor->name = malloc(strlen(name)+1);
     strcpy(actor->name, name);    
 
     return actor;
@@ -99,6 +99,7 @@ void actor_insert_movie(actors_t *actor, movies_t *movie) {
 }
 
 void print_actor(actors_t* actor) {
+
     printf("(%d): %s  ->  ", actor->id, actor->name);
     
     movies_node_t* movie = actor->movies;

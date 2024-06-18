@@ -27,7 +27,7 @@ void movies_array_free(movies_array_t** array) {
 }
 
 void movies_array_resize(movies_array_t* array) {
-    int new_size = array->max_size * SIZE_MULTIPLIER;
+    int new_size = array->max_size * MOVIES_SIZE_MULTIPLIER;
 
     // array->data = realloc(array->data, sizeof(movies_t*) * new_size);
     movies_t** new_array = calloc(new_size, sizeof(movies_t*));

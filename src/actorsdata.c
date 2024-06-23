@@ -17,8 +17,6 @@ actors_array_t* actors_array_create() {
 
 void actors_array_free(actors_array_t** array) {
     for (int i = 0; i < (*array)->length; i++) {
-
-
         free((*array)->data[i]);        
     }
 
@@ -97,6 +95,7 @@ void actor_insert_movie(actors_t *actor, movies_t *movie) {
 
     current->next = node;
 }
+
 
 void print_actor(actors_t* actor) {
     printf("(%d): %s  ->  ", actor->id, actor->name);

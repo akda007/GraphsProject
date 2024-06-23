@@ -20,6 +20,7 @@ void write_file(const char* file, movies_array_t* data) {
         movies_node_t* current = movie->neighbors;
         while (current) {
             fprintf(f, "\"%s\"", current->node->title);
+
             current = current->next;
 
             if (current) {

@@ -55,20 +55,7 @@ void movies_array_insert(movies_array_t* array, movies_t* movie) {
         movies_array_resize(array);
     }
 
-    int index = movie->id % array->max_size;
-
-    while (array->data[index]) {
-        index++;
-
-        if (index >= array->max_size) {
-            movies_array_resize(array);
-
-            index = movie->id % array->max_size;
-        }
-    }
-
-    array->data[index] = movie;
-    array->length++;
+    array->data[array->length++] = movie;
 }
 
 
@@ -151,32 +138,22 @@ void insert_movie_neighbor(movies_t* movie, movies_t* neighbor) {
 }
 
 movies_t* array_find_movie(movies_array_t* array, int id) {
-    int index = id % array->max_size;
+    int low = 0, high = array->length-1;
 
-    if (index == array->max_size) {
-        return NULL;
-    }
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
 
-    movies_t* movie = array->data[index];
-
-    if (!movie)
-        return NULL;
-
-    if (movie->id == id) {
-        return movie;
-    }
-
-    for (int i = index; i < array->max_size; i++) {
-        movie = array->data[i];
-
-        if (!movie) {
-            return NULL;
+        if (array->data[mid]->id == id) {
+            return array->data[mid];
         }
-        
-        if (movie->id == id) {
-            return movie;
+
+        if (array->data[mid]->id < id) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
         }
     }
 
     return NULL;
 }
+

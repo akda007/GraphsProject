@@ -37,6 +37,13 @@ void parse_movies_file(const char* file_path, movies_array_t* movies_array) {
             continue;
         }
 
+        static int k = 0;
+         
+        // printf("%d\n", k++);
+        if (k++ % 10000 == 0) {
+            printf("%d\n", k);
+        }
+
         movies_t* movie = create_movie(parse_id(id), title);
 
         movies_array_insert(movies_array, movie);
@@ -87,6 +94,7 @@ void update_neighbors(actors_t* actor) {
 
         node = node->next;
     }
+
     
 }
 
@@ -117,7 +125,10 @@ void parse_actors_file(const char* file_path, actors_array_t* data_array, movies
             continue;
         }
 
-
+        static int j = 0;
+        if (j++ % 10000 == 0) {
+            printf("%d\n", j);
+        }
         update_actor_movies(movies, actor, titles);
         update_neighbors(actor);
 

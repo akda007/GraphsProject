@@ -1,5 +1,5 @@
 CC := gcc
-CFLAGS := -Wall -Wextra -Iinclude -MMD -MP
+CFLAGS := -Wall -Wextra -Iinclude -MMD -MP -g
 LDFLAGS :=
 
 SRC_DIR := src
@@ -24,7 +24,7 @@ MOCK_DATA_ORIGIN := $(addprefix $(MOCK_DATA_DIR)/,$(MOCK_DATA_FILES))
 MOCK_DATA_DEST := $(addprefix $(BIN_DIR)/,$(MOCK_DATA_FILES))
 
 # Main target
-TARGET := $(BIN_DIR)/main
+TARGET := $(BIN_DIR)/main.exe
 
 all: $(BUILD_DIR) $(TARGET) $(MOCK_DATA_DEST)
 
@@ -35,11 +35,9 @@ $(MOCK_DATA_DEST): $(BIN_DIR)/% : $(MOCK_DATA_DIR)/%
 	cp $< $@
 	
 $(TARGET): $(OBJS)
-	mkdir -p $(BIN_DIR)
 	$(CC) $(LDFLAGS) -o $@ $^
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 -include $(DEPS)

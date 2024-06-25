@@ -3,8 +3,8 @@
 
 #include "datatypes.h"
 
-#define MSTART_SIZE 1000
-#define MOVIES_SIZE_MULTIPLIER 2
+#define MSTART_SIZE 100000
+#define MOVIES_SIZE_MULTIPLIER 5
 #define RESIZE_MARGIN 80 //percentage
 
 typedef struct movies_array {
